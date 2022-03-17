@@ -5,6 +5,7 @@
 <nz-table #basicTable [nzData]="producto">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Nombre</th>
         <th>Categoria</th>
         <th>Precio Unitario</th>
@@ -14,14 +15,15 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of basicTable.data">
+        <td>{{data.idproducto}}</td>
         <td>{{data.nombre}}</td>
         <td>{{data.categoria}}</td>
         <td>{{data.preciounitario}}</td>
         <td>{{data.descripcion}}</td>
         <td>
-         <a>Editar</a>
+         <a (click)="open(data)">Editar</a>
          <a>  -  </a>
-         <a>Borrar</a>
+         <a (click)="delete(data.idproducto)">Borrar</a>
         </td>
       </tr>
     </tbody>
@@ -32,7 +34,7 @@
   [nzMaskClosable]="false"
   [nzWidth]="720"
   [nzVisible]="visible"
-  nzTitle="Create"
+  nzTitle="Añadir Productos en existencia"
   [nzFooter]="footerTpl"
   (nzOnClose)="close()"
 >

@@ -20,6 +20,7 @@ export class ProductoComponent implements OnInit {
 
 //Creo(FormGroup) y defino estructura de un formulario(FormBuilder)
   formProductos: FormGroup  =   this.fb.group({
+    idproducto:[],
     nombre:[,[Validators.required]],
     categoria:[,[Validators.required]],
     descripcion:[,[Validators.required]],
@@ -50,12 +51,12 @@ producto:Producto[]=[]; //Arreglo de datos de productos
   }
 
   guardar():void{
-    if(this.formProductos.value.id){//Actualizar
-      this.productoServices.updateById({'id':this.formProductos.value.id,'body':this.formProductos.value}).subscribe(
+    if(this.formProductos.value.idproducto){//Actualizar si existe id
+      this.productoServices.updateById({'id':this.formProductos.value.idproducto,'body':this.formProductos.value}).subscribe(
         () => 
         {
           this.producto = this.producto.map(obj => {
-            if (obj.idproducto === this.formProductos.value.id)
+            if (obj.idproducto === this.formProductos.value.idproducto)
               return this.formProductos.value;          
             return obj;
           });
@@ -64,8 +65,8 @@ producto:Producto[]=[]; //Arreglo de datos de productos
           this.close();
         }
       )
-    }else{//Insertar
-    delete this.formProductos.value.id //Eliminamos el campo ID porque se genera de forma automatica en la BD
+    }else{//crea uno nuevo si no existe
+    delete this.formProductos.value.idproducto
     this.productoServices.create({'body':this.formProductos.value}).subscribe(
       datoAgregado=>
       {
@@ -77,7 +78,7 @@ producto:Producto[]=[]; //Arreglo de datos de productos
     }
   }
 
-  delete(id:string):void{
+  delete(id:any):void{
     this.productoServices.deleteById({id}).subscribe(() => {
       this.producto = this.producto.filter(x => x.idproducto !== id);
     })
