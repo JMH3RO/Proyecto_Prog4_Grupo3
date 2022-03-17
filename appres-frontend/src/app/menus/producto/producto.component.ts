@@ -20,10 +20,10 @@ export class ProductoComponent implements OnInit {
 
 //Creo(FormGroup) y defino estructura de un formulario(FormBuilder)
   formProductos: FormGroup  =   this.fb.group({
-    nombre:['Computadora'],
-    categoria:['Dell'],
-    descripcion:['Negro'],
-    preciounitario:[1,[Validators.min(1),Validators.max(100)]],
+    nombre:[,[Validators.required]],
+    categoria:[,[Validators.required]],
+    descripcion:[,[Validators.required]],
+    preciounitario:[,[Validators.min(1),Validators.max(5000)]],
   })
 ;
 
