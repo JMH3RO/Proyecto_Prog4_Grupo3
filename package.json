@@ -1,7 +1,7 @@
 {
-  "name": "resbar_apirestauran_grupo3",
+  "name": "appres",
   "version": "0.0.1",
-  "description": "Proyecto_Proga4_Grupo3",
+  "description": "appres",
   "keywords": [
     "loopback-application",
     "loopback"
@@ -25,8 +25,8 @@
     "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
     "posttest": "npm run lint",
     "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
-    "docker:build": "docker build -t resbar_apirestauran_grupo3 .",
-    "docker:run": "docker run -p 3000:3000 -d resbar_apirestauran_grupo3",
+    "docker:build": "docker build -t appres .",
+    "docker:run": "docker run -p 3000:3000 -d appres",
     "premigrate": "npm run build",
     "migrate": "node ./dist/migrate",
     "preopenapi-spec": "npm run build",
@@ -40,7 +40,7 @@
     "type": "git",
     "url": ""
   },
-  "author": "JMH3RO <jmh3ro@gmail.com>",
+  "author": "mhayde <mhayde@unitec.edu>",
   "license": "",
   "files": [
     "README.md",
