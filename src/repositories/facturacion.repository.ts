@@ -1,6 +1,6 @@
 import {inject} from '@loopback/core';
 import {DefaultCrudRepository} from '@loopback/repository';
-import {ConnDataSource} from '../datasources';
+import {MongodbDataSource} from '../datasources';
 import {Facturacion, FacturacionRelations} from '../models';
 
 export class FacturacionRepository extends DefaultCrudRepository<
@@ -9,7 +9,7 @@ export class FacturacionRepository extends DefaultCrudRepository<
   FacturacionRelations
 > {
   constructor(
-    @inject('datasources.conn') dataSource: ConnDataSource,
+    @inject('datasources.mongodb') dataSource: MongodbDataSource,
   ) {
     super(Facturacion, dataSource);
   }
