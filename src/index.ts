@@ -1,9 +1,9 @@
-import {ApplicationConfig, ResbarApirestauranGrupo3Application} from './application';
+import {ApplicationConfig, AppresApplication} from './application';
 
 export * from './application';
 
 export async function main(options: ApplicationConfig = {}) {
-  const app = new ResbarApirestauranGrupo3Application(options);
+  const app = new AppresApplication(options);
   await app.boot();
   await app.start();
 

@@ -1,10 +1,10 @@
-import {ResbarApirestauranGrupo3Application} from './application';
+import {AppresApplication} from './application';
 
 export async function migrate(args: string[]) {
   const existingSchema = args.includes('--rebuild') ? 'drop' : 'alter';
   console.log('Migrating schemas (%s existing schema)', existingSchema);
 
-  const app = new ResbarApirestauranGrupo3Application();
+  const app = new AppresApplication();
   await app.boot();
   await app.migrateSchema({existingSchema});
 
