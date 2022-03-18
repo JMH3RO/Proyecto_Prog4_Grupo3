@@ -1,0 +1,658 @@
+
+> appres@0.0.1 preopenapi-spec
+> npm run build
+
+
+> appres@0.0.1 build
+> lb-tsc
+
+
+> appres@0.0.1 openapi-spec
+> node ./dist/openapi-spec
+
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "appres",
+    "version": "0.0.1",
+    "description": "appres",
+    "contact": {
+      "name": "mhayde",
+      "email": "mhayde@unitec.edu"
+    }
+  },
+  "paths": {
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    },
+    "/productos/count": {
+      "get": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "count",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Producto.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Producto>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ProductoController.count"
+      }
+    },
+    "/productos/{id}": {
+      "put": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Producto PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Producto"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ProductoController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Producto PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductoPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "ProductoController.updateById"
+      },
+      "get": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "findById",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductoWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Producto.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ProductoController.findById"
+      },
+      "delete": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Producto DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "ProductoController.deleteById"
+      }
+    },
+    "/productos": {
+      "post": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "create",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Producto"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewProducto"
+              }
+            }
+          }
+        },
+        "operationId": "ProductoController.create"
+      },
+      "patch": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Producto.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Producto>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductoPartial"
+              }
+            }
+          }
+        },
+        "operationId": "ProductoController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "ProductoController",
+        "x-operation-name": "find",
+        "tags": [
+          "ProductoController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Producto model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductoWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Producto.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "ProductoController.find"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Producto": {
+        "title": "Producto",
+        "type": "object",
+        "properties": {
+          "idproducto": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "preciounitario": {
+            "type": "number"
+          },
+          "categoria": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombre",
+          "preciounitario",
+          "categoria"
+        ],
+        "additionalProperties": false
+      },
+      "NewProducto": {
+        "title": "NewProducto",
+        "type": "object",
+        "description": "(tsType: Producto, schemaOptions: { title: 'NewProducto' })",
+        "properties": {
+          "idproducto": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "preciounitario": {
+            "type": "number"
+          },
+          "categoria": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombre",
+          "preciounitario",
+          "categoria"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Producto"
+      },
+      "ProductoWithRelations": {
+        "title": "ProductoWithRelations",
+        "type": "object",
+        "description": "(tsType: ProductoWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "idproducto": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "preciounitario": {
+            "type": "number"
+          },
+          "categoria": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombre",
+          "preciounitario",
+          "categoria"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "ProductoWithRelations"
+      },
+      "ProductoPartial": {
+        "title": "ProductoPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Producto>, schemaOptions: { partial: true })",
+        "properties": {
+          "idproducto": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "preciounitario": {
+            "type": "number"
+          },
+          "categoria": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Producto>"
+      },
+      "PingResponse": {
+        "type": "object",
+        "title": "PingResponse",
+        "properties": {
+          "greeting": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "Producto.Filter": {
+        "type": "object",
+        "title": "Producto.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "idproducto": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "preciounitario": {
+                    "type": "boolean"
+                  },
+                  "categoria": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "idproducto",
+                    "nombre",
+                    "descripcion",
+                    "preciounitario",
+                    "categoria"
+                  ],
+                  "example": "idproducto"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Producto.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Producto>"
+      },
+      "Producto.Filter1": {
+        "type": "object",
+        "title": "Producto.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Producto.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "idproducto": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "preciounitario": {
+                    "type": "boolean"
+                  },
+                  "categoria": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "idproducto",
+                    "nombre",
+                    "descripcion",
+                    "preciounitario",
+                    "categoria"
+                  ],
+                  "example": "idproducto"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Producto.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Producto>"
+      }
+    }
+  }
+}
