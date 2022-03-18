@@ -1,4 +1,4 @@
-import {ResbarApirestauranGrupo3Application} from '../..';
+import {AppresApplication} from '../..';
 import {
   createRestAppClient,
   givenHttpServerConfig,
@@ -14,7 +14,7 @@ export async function setupApplication(): Promise<AppWithClient> {
     // port: +process.env.PORT,
   });
 
-  const app = new ResbarApirestauranGrupo3Application({
+  const app = new AppresApplication({
     rest: restConfig,
   });
 
@@ -27,6 +27,6 @@ export async function setupApplication(): Promise<AppWithClient> {
 }
 
 export interface AppWithClient {
-  app: ResbarApirestauranGrupo3Application;
+  app: AppresApplication;
   client: Client;
 }
