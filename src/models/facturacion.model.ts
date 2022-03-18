@@ -1,46 +1,40 @@
 import {Entity, model, property} from '@loopback/repository';
 
 @model()
-export class Producto extends Entity {
+export class Facturacion extends Entity {
   @property({
     type: 'string',
     id: true,
     generated: true,
   })
-  idproducto?: string;
+  idfactura?: string;
 
   @property({
     type: 'string',
     required: true,
   })
-  nombre: string;
-
-  @property({
-    type: 'string',
-    default: "n/a",
-  })
-  descripcion?: string;
+  idorden: string;
 
   @property({
     type: 'number',
     required: true,
   })
-  preciounitario: number;
+  total: number;
 
   @property({
     type: 'string',
-    required: true,
+    default: "Efectivo",
   })
-  categoria: string;
+  metodopago?: string;
 
 
-  constructor(data?: Partial<Producto>) {
+  constructor(data?: Partial<Facturacion>) {
     super(data);
   }
 }
 
-export interface ProductoRelations {
+export interface FacturacionRelations {
   // describe navigational properties here
 }
 
-export type ProductoWithRelations = Producto & ProductoRelations;
+export type FacturacionWithRelations = Facturacion & FacturacionRelations;

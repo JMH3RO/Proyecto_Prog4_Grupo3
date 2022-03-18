@@ -7,37 +7,32 @@ export class Orden extends Entity {
     id: true,
     generated: true,
   })
-  id?: string;
+  idorden?: string;
 
   @property({
-    type: 'date',
-    default: '$now',
-  })
-  fecha?: string;
-
-  @property({
-    type: 'string',
+    type: 'number',
     required: true,
   })
-  mesero: string;
+  nummesa: number;
 
   @property({
-    type: 'string',
+    type: 'array',
+    itemType: 'object',
     required: true,
   })
-  mesa: string;
+  producto: object[];
 
   @property({
-    type: 'string',
+    type: 'number',
     required: true,
   })
-  cliente: string;
+  subtotal: number;
 
   @property({
-    type: 'string',
+    type: 'number',
     required: true,
   })
-  estado: string;
+  isv: number;
 
   @property({
     type: 'number',
@@ -47,16 +42,9 @@ export class Orden extends Entity {
 
   @property({
     type: 'string',
-    required: true,
+    default: "OrdenPendiente",
   })
-  observacion: string;
-
-  @property({
-    type: 'array',
-    itemType: 'object',
-    required: true,
-  })
-  detalleOrden: object[];
+  estado?: string;
 
 
   constructor(data?: Partial<Orden>) {
