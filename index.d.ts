@@ -1,3 +1,3 @@
-export * from './producto.model';
-export * from './orden.model';
-export * from './facturacion.model';
+export * from './producto.repository';
+export * from './orden.repository';
+export * from './facturacion.repository';
