@@ -51,8 +51,8 @@ facturacion:Facturacion[]=[]; //Arreglo de datos de productos
   }
 
   guardar():void{
-    if(this.formFacturacion.value.idproducto){//Actualizar si existe id
-      this.FacturacionServices.updateById({'id':this.formFacturacion.value.idproducto,'body':this.formFacturacion.value}).subscribe(
+    if(this.formFacturacion.value.idfactura){//Actualizar si existe id
+      this.FacturacionServices.updateById({'id':this.formFacturacion.value.idfactura,'body':this.formFacturacion.value}).subscribe(
         () => 
         {
           this.facturacion = this.facturacion.map(obj => {
@@ -66,7 +66,7 @@ facturacion:Facturacion[]=[]; //Arreglo de datos de productos
         }
       )
     }else{//crea uno nuevo si no existe
-    delete this.formFacturacion.value.idproducto
+    delete this.formFacturacion.value.idfactura
     this.FacturacionServices.create({'body':this.formFacturacion.value}).subscribe(
       datoAgregado=>
       {
