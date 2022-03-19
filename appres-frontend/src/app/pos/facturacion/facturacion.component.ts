@@ -20,7 +20,7 @@ export class FacturacionComponent implements OnInit {
 
 //Creo(FormGroup) y defino estructura de un formulario(FormBuilder)
   formFacturacion: FormGroup  =   this.fb.group({
-    idfacturacion:[],
+    idfactura:[],
     idorden:[,[Validators.required]],
     total:[,[Validators.required]],
     metodopago:[,[Validators.required]],
@@ -56,7 +56,7 @@ facturacion:Facturacion[]=[]; //Arreglo de datos de productos
         () => 
         {
           this.facturacion = this.facturacion.map(obj => {
-            if (obj.idfactura === this.formFacturacion.value.idproducto)
+            if (obj.idfactura === this.formFacturacion.value.idfactura)
               return this.formFacturacion.value;          
             return obj;
           });
