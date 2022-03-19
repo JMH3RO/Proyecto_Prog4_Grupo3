@@ -1,1 +1,86 @@
-<p>facturacion works!</p>
+<h1>Productos</h1>
+<nz-divider></nz-divider>
+<button nz-button nzType="primary" (click)="open()">Nuevo Producto</button>
+<nz-divider></nz-divider>
+<nz-table #basicTable [nzData]="facturacion">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th># Orden</th>
+        <th>Total</th>
+        <th>Metodo de Pago</th>
+        <th>Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{data.idfactura}}</td>
+        <td>{{data.idorden}}</td>
+        <td>{{data.total}}</td>
+        <td>{{data.metodopago}}</td>
+        <td>
+         <a (click)="open(data)">Editar</a>
+         <a>  -  </a>
+         <a (click)="delete(data.idfactura)">Borrar</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <nz-drawer
+  [nzBodyStyle]="{ overflow: 'auto' }"
+  [nzMaskClosable]="false"
+  [nzWidth]="720"
+  [nzVisible]="visible"
+  nzTitle="Añadir Productos en existencia"
+  [nzFooter]="footerTpl"
+  (nzOnClose)="close()"
+>
+  <form nz-form *nzDrawerContent (ngsubmit)="guardar()" [formGroup]="formFacturacion">
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="24">
+        <nz-form-item>
+          <nz-form-label>Nombre</nz-form-label>
+          <nz-form-control >
+            <input formControlName="nombre" nz-input placeholder="Porfavor, ingresar nombre del producto" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="24">
+        <nz-form-item>
+          <nz-form-label>Categoria</nz-form-label>
+          <nz-form-control>
+            <input formControlName="categoria" nz-input placeholder="Porfavor, ingresar la categoria" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>Descripcion</nz-form-label>
+          <nz-form-control>
+            <input formControlName="descripcion" nz-input placeholder="Ingresar la descripcion del producto"/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label>Precio Unitario</nz-form-label>
+          <nz-form-control>
+            <nz-input-number formControlName="preciounitario" [nzStep]="1" nzPlaceHolder="Ingresar el precio"></nz-input-number>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+
+  <ng-template #footerTpl>
+    <div style="float: right">
+      <button (click)="close()" nz-button style="margin-right: 8px;" >Cancelar</button>
+      <button [disabled]="formFacturacion.invalid" nz-button nzType="primary" (click)="guardar()">Enviar</button>
+    </div>
+  </ng-template>
+</nz-drawer>
