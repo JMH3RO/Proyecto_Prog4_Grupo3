@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import {FormBuilder,FormGroup,ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path:'',
