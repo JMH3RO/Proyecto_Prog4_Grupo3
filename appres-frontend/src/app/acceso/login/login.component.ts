@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
           control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
+          control.updateValueAndValidity({ onlySelf: false });
         }
       });
     }
