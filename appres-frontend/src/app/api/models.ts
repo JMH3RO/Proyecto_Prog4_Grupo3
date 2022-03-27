@@ -10,5 +10,7 @@ export { Producto } from './models/producto';
 export { NewProducto } from './models/new-producto';
 export { ProductoWithRelations } from './models/producto-with-relations';
 export { ProductoPartial } from './models/producto-partial';
+export { User } from './models/user';
+export { NewUser } from './models/new-user';
 export { Count as LoopbackCount } from './models/loopback/count';
 export { PingResponse } from './models/ping-response';

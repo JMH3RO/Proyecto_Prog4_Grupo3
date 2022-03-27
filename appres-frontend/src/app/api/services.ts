@@ -2,3 +2,4 @@ export { FacturacionControllerService } from './services/facturacion-controller.
 export { OrdenControllerService } from './services/orden-controller.service';
 export { PingControllerService } from './services/ping-controller.service';
 export { ProductoControllerService } from './services/producto-controller.service';
+export { UserControllerService } from './services/user-controller.service';
