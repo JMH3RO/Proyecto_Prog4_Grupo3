@@ -15,9 +15,6 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     AccesoRoutingModule,
     NzFormModule,
     NzInputModule,
-    FormBuilder,
-    FormGroup,
-    Validators,
     ReactiveFormsModule,
     NzButtonModule
   ]
