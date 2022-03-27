@@ -1,15 +1,3 @@
-
-> appres@0.0.1 preopenapi-spec
-> npm run build
-
-
-> appres@0.0.1 build
-> lb-tsc
-
-
-> appres@0.0.1 openapi-spec
-> node ./dist/openapi-spec
-
 {
   "openapi": "3.0.0",
   "info": {
@@ -22,6 +10,612 @@
     }
   },
   "paths": {
+    "/facturacions/count": {
+      "get": {
+        "x-controller-name": "FacturacionController",
+        "x-operation-name": "count",
+        "tags": [
+          "FacturacionController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Facturacion model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Facturacion.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Facturacion>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "FacturacionController.count"
+      }
+    },
+    "/facturacions/{id}": {
+      "put": {
+        "x-controller-name": "FacturacionController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "FacturacionController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Facturacion PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facturacion"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "FacturacionController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "FacturacionController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "FacturacionController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Facturacion PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacturacionPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "FacturacionController.updateById"
+      },
+      "get": {
+        "x-controller-name": "FacturacionController",
+        "x-operation-name": "findById",
+        "tags": [
+          "FacturacionController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Facturacion model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FacturacionWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facturacion.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "FacturacionController.findById"
+      },
+      "delete": {
+        "x-controller-name": "FacturacionController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "FacturacionController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Facturacion DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "FacturacionController.deleteById"
+      }
+    },
+    "/facturacions": {
+      "post": {
+        "x-controller-name": "FacturacionController",
+        "x-operation-name": "create",
+        "tags": [
+          "FacturacionController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Facturacion model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facturacion"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewFacturacion"
+              }
+            }
+          }
+        },
+        "operationId": "FacturacionController.create"
+      },
+      "patch": {
+        "x-controller-name": "FacturacionController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "FacturacionController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Facturacion PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Facturacion.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Facturacion>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FacturacionPartial"
+              }
+            }
+          }
+        },
+        "operationId": "FacturacionController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "FacturacionController",
+        "x-operation-name": "find",
+        "tags": [
+          "FacturacionController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Facturacion model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FacturacionWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facturacion.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "FacturacionController.find"
+      }
+    },
+    "/ordens/count": {
+      "get": {
+        "x-controller-name": "OrdenController",
+        "x-operation-name": "count",
+        "tags": [
+          "OrdenController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Orden model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Orden.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Orden>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "OrdenController.count"
+      }
+    },
+    "/ordens/{id}": {
+      "put": {
+        "x-controller-name": "OrdenController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "OrdenController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Orden PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Orden"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "OrdenController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "OrdenController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "OrdenController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Orden PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrdenPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "OrdenController.updateById"
+      },
+      "get": {
+        "x-controller-name": "OrdenController",
+        "x-operation-name": "findById",
+        "tags": [
+          "OrdenController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Orden model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrdenWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orden.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "OrdenController.findById"
+      },
+      "delete": {
+        "x-controller-name": "OrdenController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "OrdenController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Orden DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "OrdenController.deleteById"
+      }
+    },
+    "/ordens": {
+      "post": {
+        "x-controller-name": "OrdenController",
+        "x-operation-name": "create",
+        "tags": [
+          "OrdenController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Orden model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orden"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewOrden"
+              }
+            }
+          }
+        },
+        "operationId": "OrdenController.create"
+      },
+      "patch": {
+        "x-controller-name": "OrdenController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "OrdenController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Orden PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Orden.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Orden>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrdenPartial"
+              }
+            }
+          }
+        },
+        "operationId": "OrdenController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "OrdenController",
+        "x-operation-name": "find",
+        "tags": [
+          "OrdenController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Orden model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrdenWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orden.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "OrdenController.find"
+      }
+    },
     "/ping": {
       "get": {
         "x-controller-name": "PingController",
@@ -346,6 +940,89 @@
         ],
         "operationId": "ProductoController.find"
       }
+    },
+    "/signup": {
+      "post": {
+        "x-controller-name": "UserController",
+        "x-operation-name": "signUp",
+        "tags": [
+          "UserController"
+        ],
+        "responses": {
+          "200": {
+            "description": "User",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUser"
+              }
+            }
+          }
+        },
+        "operationId": "UserController.signUp"
+      }
+    },
+    "/users/login": {
+      "post": {
+        "x-controller-name": "UserController",
+        "x-operation-name": "login",
+        "tags": [
+          "UserController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 8
+                  }
+                }
+              }
+            }
+          },
+          "description": "The input of login function",
+          "required": true
+        },
+        "operationId": "UserController.login"
+      }
     }
   },
   "servers": [
@@ -355,6 +1032,245 @@
   ],
   "components": {
     "schemas": {
+      "Facturacion": {
+        "title": "Facturacion",
+        "type": "object",
+        "properties": {
+          "idfactura": {
+            "type": "string"
+          },
+          "idorden": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "metodopago": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "idorden",
+          "total"
+        ],
+        "additionalProperties": false
+      },
+      "NewFacturacion": {
+        "title": "NewFacturacion",
+        "type": "object",
+        "description": "(tsType: Omit<Facturacion, 'idfactura'>, schemaOptions: { title: 'NewFacturacion', exclude: [ 'idfactura' ] })",
+        "properties": {
+          "idorden": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "metodopago": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "idorden",
+          "total"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Facturacion, 'idfactura'>"
+      },
+      "FacturacionWithRelations": {
+        "title": "FacturacionWithRelations",
+        "type": "object",
+        "description": "(tsType: FacturacionWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "idfactura": {
+            "type": "string"
+          },
+          "idorden": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "metodopago": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "idorden",
+          "total"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "FacturacionWithRelations"
+      },
+      "FacturacionPartial": {
+        "title": "FacturacionPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Facturacion>, schemaOptions: { partial: true })",
+        "properties": {
+          "idfactura": {
+            "type": "string"
+          },
+          "idorden": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "metodopago": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Facturacion>"
+      },
+      "Orden": {
+        "title": "Orden",
+        "type": "object",
+        "properties": {
+          "idorden": {
+            "type": "string"
+          },
+          "nummesa": {
+            "type": "number"
+          },
+          "producto": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "subtotal": {
+            "type": "number"
+          },
+          "isv": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "estado": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nummesa",
+          "producto",
+          "subtotal",
+          "isv",
+          "total"
+        ],
+        "additionalProperties": false
+      },
+      "NewOrden": {
+        "title": "NewOrden",
+        "type": "object",
+        "description": "(tsType: Omit<Orden, 'idorden'>, schemaOptions: { title: 'NewOrden', exclude: [ 'idorden' ] })",
+        "properties": {
+          "nummesa": {
+            "type": "number"
+          },
+          "producto": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "subtotal": {
+            "type": "number"
+          },
+          "isv": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "estado": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nummesa",
+          "producto",
+          "subtotal",
+          "isv",
+          "total"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Orden, 'idorden'>"
+      },
+      "OrdenWithRelations": {
+        "title": "OrdenWithRelations",
+        "type": "object",
+        "description": "(tsType: OrdenWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "idorden": {
+            "type": "string"
+          },
+          "nummesa": {
+            "type": "number"
+          },
+          "producto": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "subtotal": {
+            "type": "number"
+          },
+          "isv": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "estado": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nummesa",
+          "producto",
+          "subtotal",
+          "isv",
+          "total"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "OrdenWithRelations"
+      },
+      "OrdenPartial": {
+        "title": "OrdenPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Orden>, schemaOptions: { partial: true })",
+        "properties": {
+          "idorden": {
+            "type": "string"
+          },
+          "nummesa": {
+            "type": "number"
+          },
+          "producto": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "subtotal": {
+            "type": "number"
+          },
+          "isv": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "estado": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Orden>"
+      },
       "Producto": {
         "title": "Producto",
         "type": "object",
@@ -385,11 +1301,8 @@
       "NewProducto": {
         "title": "NewProducto",
         "type": "object",
-        "description": "(tsType: Producto, schemaOptions: { title: 'NewProducto' })",
+        "description": "(tsType: Omit<Producto, 'idproducto'>, schemaOptions: { title: 'NewProducto', exclude: [ 'idproducto' ] })",
         "properties": {
-          "idproducto": {
-            "type": "string"
-          },
           "nombre": {
             "type": "string"
           },
@@ -409,7 +1322,7 @@
           "categoria"
         ],
         "additionalProperties": false,
-        "x-typescript-type": "Producto"
+        "x-typescript-type": "Omit<Producto, 'idproducto'>"
       },
       "ProductoWithRelations": {
         "title": "ProductoWithRelations",
@@ -464,6 +1377,428 @@
         "additionalProperties": false,
         "x-typescript-type": "Partial<Producto>"
       },
+      "User": {
+        "title": "User",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "realm": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "verificationToken": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "additionalProperties": true
+      },
+      "NewUser": {
+        "title": "NewUser",
+        "type": "object",
+        "description": "(tsType: NewUserRequest, schemaOptions: { title: 'NewUser' })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "realm": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "verificationToken": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "additionalProperties": true,
+        "x-typescript-type": "NewUserRequest"
+      },
+      "NewUserRequest": {
+        "title": "NewUserRequest",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "realm": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "verificationToken": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "additionalProperties": true
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "Facturacion.Filter": {
+        "type": "object",
+        "title": "Facturacion.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "idfactura": {
+                    "type": "boolean"
+                  },
+                  "idorden": {
+                    "type": "boolean"
+                  },
+                  "total": {
+                    "type": "boolean"
+                  },
+                  "metodopago": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "idfactura",
+                    "idorden",
+                    "total",
+                    "metodopago"
+                  ],
+                  "example": "idfactura"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Facturacion.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Facturacion>"
+      },
+      "Facturacion.Filter1": {
+        "type": "object",
+        "title": "Facturacion.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Facturacion.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "idfactura": {
+                    "type": "boolean"
+                  },
+                  "idorden": {
+                    "type": "boolean"
+                  },
+                  "total": {
+                    "type": "boolean"
+                  },
+                  "metodopago": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "idfactura",
+                    "idorden",
+                    "total",
+                    "metodopago"
+                  ],
+                  "example": "idfactura"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Facturacion.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Facturacion>"
+      },
+      "Orden.Filter": {
+        "type": "object",
+        "title": "Orden.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "idorden": {
+                    "type": "boolean"
+                  },
+                  "nummesa": {
+                    "type": "boolean"
+                  },
+                  "producto": {
+                    "type": "boolean"
+                  },
+                  "subtotal": {
+                    "type": "boolean"
+                  },
+                  "isv": {
+                    "type": "boolean"
+                  },
+                  "total": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "idorden",
+                    "nummesa",
+                    "producto",
+                    "subtotal",
+                    "isv",
+                    "total",
+                    "estado"
+                  ],
+                  "example": "idorden"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Orden.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Orden>"
+      },
+      "Orden.Filter1": {
+        "type": "object",
+        "title": "Orden.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Orden.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "idorden": {
+                    "type": "boolean"
+                  },
+                  "nummesa": {
+                    "type": "boolean"
+                  },
+                  "producto": {
+                    "type": "boolean"
+                  },
+                  "subtotal": {
+                    "type": "boolean"
+                  },
+                  "isv": {
+                    "type": "boolean"
+                  },
+                  "total": {
+                    "type": "boolean"
+                  },
+                  "estado": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "idorden",
+                    "nummesa",
+                    "producto",
+                    "subtotal",
+                    "isv",
+                    "total",
+                    "estado"
+                  ],
+                  "example": "idorden"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Orden.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Orden>"
+      },
       "PingResponse": {
         "type": "object",
         "title": "PingResponse",
@@ -485,16 +1820,6 @@
               }
             },
             "additionalProperties": true
-          }
-        }
-      },
-      "loopback.Count": {
-        "type": "object",
-        "title": "loopback.Count",
-        "x-typescript-type": "@loopback/repository#Count",
-        "properties": {
-          "count": {
-            "type": "number"
           }
         }
       },
@@ -653,6 +1978,18 @@
         "additionalProperties": false,
         "x-typescript-type": "@loopback/repository#Filter<Producto>"
       }
+    },
+    "securitySchemes": {
+      "jwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "jwt": []
+    }
+  ]
 }

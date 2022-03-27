@@ -8,6 +8,7 @@ import { FacturacionControllerService } from './services/facturacion-controller.
 import { OrdenControllerService } from './services/orden-controller.service';
 import { PingControllerService } from './services/ping-controller.service';
 import { ProductoControllerService } from './services/producto-controller.service';
+import { UserControllerService } from './services/user-controller.service';
 
 /**
  * Module that provides all services and configuration.
@@ -21,6 +22,7 @@ import { ProductoControllerService } from './services/producto-controller.servic
     OrdenControllerService,
     PingControllerService,
     ProductoControllerService,
+    UserControllerService,
     ApiConfiguration
   ],
 })
